@@ -1,0 +1,267 @@
+==] Core Java:- (J2SE):- (Java 2 Standard Edition)
+                       Where 2 is the version
+ -->Stand Alone Application:
+    -> An application is restricted to a particular system.
+     Ex: Calculator, Windows, Antivirus etc...
+    -> This application can not be accessed Remotely.
+
+==] Advance Java:- (J2EE):- (Java 2 Enterprise Edition)
+ --> Web Application:
+    -> An application is not restricted to a particular system.
+      Ex: facebook, gmail etc...
+    -> This application can be accessed Remotely.
+
+  --> JDBC(Java Database Connectivity)
+  --> Servlet
+  --> JSP(Java Server Page)
+
+==] Standard Structure of package creation:
+ [org/com] -> organization
+   [CompanyName] ->
+     [ApplicationName] ->
+       Modules _.
+
+==] JAR File: (JAVA ARCHIVE) :
+ --> It is present in ZIP file Format.
+---> ZIP File:
+ --> Many files stored in a single zip.
+
+ --> JAR file Contains:
+   -> .java -> It contains Source code.
+   -> .class -> It contains byte code (intermediate language).
+   -> .config files -> contains configuration files.
+         1) .xml(extensible  markup language )
+            -> It is used to configure the resources..
+         2) .properties.
+
+ --> Need for JAR file:
+   -> It is needed for simplification of web application and it contains
+     - all the properties based on requirement it can be called.
+   -> It contains more than 50,000+ properties.
+
+ --> Steps to create a JAR file:
+   1) Right click on project and select export option
+   2) open a java folder and select jar file and click ok.
+   3) Browse the location you want to create jar file.
+
+ --> Different ways to add JAR file:
+   -> There are 2 different ways to build a java path to import the properties from a jar file namely:
+     1) Externally
+     2) Internally
+
+==] Parameter:
+   -> It is the one which holds an argument -> ()
+      void m(int a){
+      }
+ --> Argument:
+   -> Data value passed to parameter, int a
+     int a[] -> where [] is known as Subscript.
+
+==] Design Pattern:
+  --> It an optimised solution for commonly re-occurring problem.
+    -> There are 2 diff categories of design pattern:
+      1) Creation Design pattern:
+        -> It involves only object creation object.
+      2) Factory Design Pattern:
+        -> It is the one which creates or produces different object of same type.
+           Ex:
+              Watch Factory:
+                      Fastrack, sonata, Titanic ...
+
+           String as input   ->(Watch Factory) It will return object as output
+            [Watch Raw]                      Sonata, Titanic
+
+==] Abstraction:
+  -> The process of hiding the implementation an showing only the functionalities to user is called as abstraction.
+  -> The output of abstraction is loose coupling and it can be achieved with the help of interface.
+
+==] loose Coupling:
+   -> The change in implementation which will not effect the user.
+     Ex: All the real time application.
+
+==] Tight Coupling:
+   -> The change in implementation which will effect the user.
+
+==] Interface:
+   -> It is medium between user and device (clint).
+     Ex: Os, Atm GUI screen, Switch, Remote..
+
+  --> Can we create an object of interface?:
+      No, Object can not created.
+      But impl. object can be created using factory or helper method.
+
+  --> Helper/Factory Method:
+     -> It is the one which helps user to create an impl. object.
+
+
+==] Factory Design Pattern:
+  --> The FDP involves 3 Different logics:-
+    1) Implementation Logic
+    2) Object Creation Logic
+    3) Utilization Logic / Consumer User.
+
+  1) Implementation Logic:
+    -> It is the basic fundamental logic which contains only impl. according to which an object has to be created.
+  2) Object Creation Logic:
+    -> It is use to create impl. object according to the impl. logic by using "Factory or Helper" method within the class.
+  3) Utilization Logic / Consumer User:
+    -> It is the most important Logic which is used  to access the functionality from the impl.
+
+  --> Interface : Object creation of interface is not possible.
+  --> Factory or helper : It is the one which helps user to create an impl. object.
+
+
+==] JDBC Architecture:
+ --> JDBC API:-
+   --> It was given by "Sun Micro System" to achieve loose coupling b/w java application and database server.
+   --> It contains interface and helper class in the form JAR file.
+   --> It is distributed in to 2 package:
+      1) java.sql
+      2) javax.sql
+   --> It contains Interface such as:
+       1)Driver
+       2)Connection
+       3)Statement
+       4)Prepared stmt.
+       5)Callable stmt.
+       6)ResultSet
+       7)MetaData
+              Etc.....
+   --> It contains one one helper class by name DriverManager.
+
+ --> JDBC Driver:
+   -> It is an implement of JDBC API.
+   -> It contains impl. classes (.class) in the form of JAR file.
+   -> It (impl. classes) is always specific to a particular server or vendor.
+   -> These are provided by respective database server or vendor.
+
+  NOTE: In JDBC user is responsible to write only consumer or utilization logic.
+
+
+ ==] JDBC:
+   -> JDBC stand for JAVA DATABASE CONNECTIVITY.
+   -> JDBC is an API (Application Programming Interface) it is used to connection between java and database.
+
+   --> API:
+   -> API stands for APPLICATION PROGRAMMING INTERFACE.
+   -> It is a software it allows that two application communicate with each other.
+
+   -> We can not install JDBC explicitly because after JDK 1.0 version its present in java only.
+
+   -> We can not connect java to database directly here with the help of driver.
+
+   --> To connect java to database we have fallows 5 steps they are:
+   STEP 0: Import the packages
+   STEP 1: Load / register Driver
+   STEP 2: Establish the Connection
+   STEP 3: Establish the Statement(Create JDBC Statement(SQL Queries))
+   STEP 4: Execute the Statement(Execute SQL Queries)
+   STEP 5: Close the Connection
+
+   STEP 1:
+    --> lOAD/REGISTER THE DRIVER:
+    -> In load or register step we create an object for JDBC Driver to talk with database
+    -> We load or register  the Driver in 2 ways they are:
+      1) Class.forName(" ");
+      2) Creates an Object for Driver
+
+      1) Class.forName("String Parameters");
+       -> Here Class is an Identifier or ClassName are present in java.lang package.
+       -> The forName is an public & static method which allows only one String parameters.
+          Example:
+                Class.forName("oracle.jdbc.driver.OracleDriver");//FullyQualifiedClassName
+
+      2) Create an Object of Driver:
+       -> Driver driver = new Driver();
+       -> DriverManager.registerDriver(driver);//Object parameters
+
+       -> Here Driver and DriverManager are the Class present in Java.sql.package.
+       -> The register Driver it an public & static method it allows only one object parameter.
+
+   STEP 2:
+    --> ESTABLISH THE CONNECTION:
+    -> In this connection step we established the connection between java to database.
+    -> We established connection in 3 ways they are:
+      1) get connection("String","String","String"); (url,userId,password)
+      2) get connection("String"); (url/userId/password)
+      3) get connection("String", PropertyFile);
+
+     -> get connection("String","String","String") nothing but the first String specify the url
+         then second String specify the userId and last String specify the password.
+
+     -> PropertyFile: The propertyFile is used to store some configuration information about database.
+
+     Example:
+         Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","805026");
+
+   STEP 3:
+   --> ESTABLISH THE STATEMENT:
+   -> In this step we write some queries to talk with the database.
+   -> We Established Statement in 2 ways they are:
+     1) Statement
+     2) PreparedStatement
+
+     1) Statement:
+      -> Statement is an interface present in java.sql.package and it is used to write some queries in java and
+         it provides some method to executing those queries in database.
+      -> Creating an object for Statement Interface:
+          Statement smt = con.createStatement();
+       Example:
+            Statement smt = con.createStatement();
+            smt.executeUpdate("create table emp(eno number, ename varchar(20),esal number)");
+
+      2) PreparedStatement:
+      -> PreparedStatement is an interface present in java.sql package. and it extends from Statement interface.
+      -> With the help of PreparedStatement we write the queries in Dynamic way.
+      -> Creating an object of PreparedStatement interface:
+         PreparedStatement pSmt = con.prepareStatement(" ");
+      Example:
+         PreparedStatement pSmt = con.prepareStatement("Insert into emp values(?,?,?)");
+
+   STEP 4:
+   --> EXECUTE THE STATEMENT:
+    -> Once the Statement Object is Created there 3 ways to execute queries they are:
+       1)execute("String sql");
+       2)executeUpdate("String sql");
+       3)executeQuery("String sql");
+
+       1) execute("String sql"):
+       -> execute is a method it is used to performed the CRUD operation and return type of execute is boolean.
+
+       2) executeUpdate("String sql"):
+       -> executeUpdate is a method it is used to Updating the data or modifying the data in the database.
+           and the return type of executeUpdate is  int.
+       Example:
+           int count =  smt.executeUpdate("update emp set esal ="+esal+" where eno = "+eid);
+
+       3) executeQuery("String sql"):
+       -> executeQuery is also a  method used to get the data or get  all the data from the database.
+          and the return type of executeQuery is ResultSet.
+
+        -> ResultSet: Is an database it is used to maintain the cursor that point to current row in the result list.
+
+        Example:
+        ResultSet rs = smt.executeQuery("select * from emp");
+
+   STEP 5:
+   --> CLOSE THE CONNECTION:
+   -> For the purpose save the coding mandatory we have to close the connection.
+     Syntax:
+      smt.close();
+      con.close();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

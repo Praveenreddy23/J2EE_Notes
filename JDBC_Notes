@@ -238,7 +238,24 @@
        -> executeQuery is also a  method used to get the data or get  all the data from the database.
           and the return type of executeQuery is ResultSet.
 
-        -> ResultSet: Is an database it is used to maintain the cursor that point to current row in the result list.
+        -> ResultSet: It is a interface, and Is an database it is used to maintain the cursor that point to current row in the result list.
+           - There are 2 methods:
+              1)next()
+              2)absolute()
+        1) next():
+            Syntax:
+                 public boolean next()
+        -- It is used to check whether the next record is present or not in cursor or buffer memory.
+        - If record is present it will return true otherwise false but not the record.
+        -- It can be used whenever there are min. no. of record present in cursor or buffer.
+        2) absolute():
+             Syntax:
+                 public boolean absolute ()
+        -- it is used to check whether the record is present in cursor or buffer memory or not based on parameter passed to absolute method i.e rowNumber
+        -- It is used whenever there are no number of records present in cursor or buffer.
+
+       -- both next() and absolute() it present in resultSet interface.
+       
 
         Example:
         ResultSet rs = smt.executeQuery("select * from emp");

@@ -1,0 +1,219 @@
+     -->SERVER<--
+==] Server:
+ --> Server is a software which manages all the resources along with
+     - which process the client request and serves the client response.
+ --> The different types of server are:
+      1. DataBase Server
+      2. Application Server
+      3. Web Server
+
+ 1. DataBase server:
+    -> It deals with data.
+     Ex: -> Oracle, MySql etc..
+ 2. Application Server:
+    -> It execute real time or dynamic application.
+    Ex: -> JBoss, IBM, Websphere etc...
+ 3. Web Server:
+    -> Web Server is a software which store and manages all the resources along with
+       - which process the client request and serves the client response.
+
+ --> Resources Format:
+       1. Audio      :- .mp3
+       2. html       :- .text/.html
+       3. xml        :- .text/.xml
+       4. application :- Zip/.exe
+       5. video      :- .mp4, .avi, etc..
+
+==] Deployment:
+  --> Making all the resources available for server is known as deployment.
+  --> It can be done in 2 ways:
+       1. Manual deployment
+       2. Automated deployment
+
+    1. Manual deployment:
+       -> In case this case all the resources are made available to server manually.
+    2. Automated deployment:
+       -> In case of Automated deployment all the resources are made available to the server automatically
+          - using automated tools using  ANT, MAVEN etc...
+       -> Whenever a web application is compressed, then we display it on to the server in the form of WAR file.
+       -> WAR refers to Web Archieve  that means it is a compressed version of web application.
+
+     -> Note: All the application are deployed in to the WEB-APPS folder of apache tomcat server.
+
+==] Apache Tomcat Server:
+  -> Folder of Apache Tomcat-Server:
+  1. bin
+  2. config
+  3. lib
+  4. log
+  5. webapps
+  6. work
+
+ 1. bin:- It contains a set of start-up and shut-down batch file which is used to start and stop the Apache-Tomcat Server.
+
+ 2. config:- It contains a set of configuration with respect to apache tomcat server.
+
+ 3. lib:- It contains a set of libraries in the form  of jar file which is used to perform some additional functionalities.
+
+ 4. log:- It is used to store all the log message which are displayed on the server console.Since, it has limited memory.
+
+ 5. webapps:- It is used to deploy all the web-application on to apache-tomcat server.
+
+ 6. work:- It is used to store data with respect to translated servlet(Conversion of JSP to a Servlet.
+
+==] JEE Container: (JAVA ENTERPRISES EDITION)
+  -> JEE container is an engine which is used to manage all the JEE components such as Servlet,JSP,EJB. etc..
+  -> Few of the JEE API`s are:
+     JSP :- Java Server Page
+     EJB :- Enterprise Java Bean
+     JTA :- Java Transaction Api
+     JPA :- Java Persistence Api
+     JMA :- java Mail Api
+
+  -> Functionality of JEE container:
+    1. Manage all the resources
+    2. Provides the runtime environment
+
+==] HTML:(Hyper Text Markup Language)
+  -> It will provide the structure of web page.
+  -> It is Static type
+
+==] JSP: (Java Server page)
+   -> It is an API (application program interface)
+   -> With the help of JSP we can design web page
+   -> And this web page it will be dynamic type.
+
+==] XML: ( Xtensible Markup language)
+   -> It is used to configure the resource./ configure the framework like Hibernate, Spring.
+   -> It helps us to design the android application.
+   -> It is used to transfer the data from client to server.
+
+ NOTE:-> Each and every application must have maximum and  minimum one web.xml without,
+        - which the JEE container fails to load an application where it throws 404 Error (Resource not Available)
+      -> We can deploy any number of application on single server but each and every application should have unique name.
+      -> At the time of application loading the web.xml is parsed(Complied) by JEE container
+        - where if there is any error present in web.xml then Jee container throws an exception called ParseException.
+
+==] All RealTime/Dynamic application contains 3 different logic namely:
+    1. Business Logic
+    2. Persistence Logic
+    3. Presentation Logic
+
+  1. Business Logic:
+    -> It perform some core functionality as some set of calculation and validation operations.
+      > Technologies involved are: Servlet, and other Framework components
+
+  2. Persistence Logic:
+    -> Persist means to store Persistence logic is used to persist the data into the persistent system.
+      > Technologies involved are: JDBC, SQL etc....
+
+  3. Presentation Logic:
+    -> It is used to present the contents on the application
+      > Technologies involved are: HTML, CSS, JavaScript etc...
+
+
+            -->SERVLET<--
+==] Servlet:
+  --> Servlet is a server side java programming which can perform all the three diff. types of logic.
+     - namely Business logic, Persistence Logic, Presentation logic,
+       - along with process the HTTP client request and get back some HTTP response.
+
+  Note:
+      -> All the Application within the server are managed by JEE container.
+      -> All the servlet within an application are managed by servlet container.
+
+  --> There are two diff. types of servlet namely:
+        1. Generic Servlet
+        2. HTTP Servlet
+   1. Generic Servlet:
+     --> Since it is not specific to any protocol or independent of protocol, Hence it is known as Generic Servlet.
+     --> Generic Servlet does not support  "Session".
+
+     ** Session:-
+             -> Any activity which takes place between start time  and stop time is known as session.
+
+     --> Generic Servlet is an abstract class which is present in javax.Servlet package.
+     --> Generic Servlet contain 3 diff. method:
+           1. Service()    :- Abstract method
+           2. init()       :- Concrete method
+           3. destroy()    :- Concrete method
+       1. Service() :
+             -> IS a abstract method. So mandatory user needs to provide impl.
+             -> It takes 2 parameters:
+                 a. ServletRequest
+                 b. ServletResponse
+             i.e:
+               public MyServlet extends javax.Servlet.GenericServlet{
+                  @Override
+                  public service(ServletRequest req, ServletResponse res) throws ServletException, IOException{
+                     .....................
+                     ..............
+                     ............ impl Logic.
+                  }
+               }
+
+   2. HTTP Servlet:
+     --> Since it is specific to http protocol hence, the name is http servlet, and it supports the session concept.
+     --> HTTP Servlet is an Abstract class, and it contains only Concrete Method They are:
+                1. Post()
+                2. Get()
+                3. Put()
+                4. Delete()
+                5. Trace()
+                6. Option()
+                7. Head()
+                8. Connect()
+     --> Whenever we Override doXXX() -> doPost(), doGet(), etc.. It throws an Exception known as ServletException and IOException
+     i.e:
+          public MyServlet extends HttpServlet {
+           protected void doXXX(HttpServletRequest req, HttpServletResponse res) throws ServletException and IOException
+           {
+               .................
+               .................Business Logic Or Impl. Logic
+           }
+           }
+     --> Http POST Method:
+            post():- allows the client to send data of unlimited length to the web server a single time
+                     - and It is useFull when posting  information.
+            put():- allows a client to place a file on the server and is similar to sending a file by FTP.
+
+            get():- It is used to fetch the data.
+
+==] Servlet LifeCycle:
+   --> Servlet gets a Life and Starts its LifeCycle only when a servlet object is created.
+   --> Servlet LifeCycle is managed by JEE Container and one of the responsibility of JEE container
+        - is to manage the life cycle of servlet.
+
+   --> There are 4 diff. phase of Servlet namely:
+       1. Instantiation Phase/Object Creation Phase
+       2. Initialization Phase
+       3. Service Phase
+       4. Destruction Phase.
+
+     1. Instantiation / Object Creation Phase:
+       --> In this phase the servlet object has to be created.
+       --> Whenever a client makes a first request to servlet object is created by JEE container by
+           - using default constructor of servlet and now servlet Life Cycle Begins.
+       --> If the JEE container does not find the default constructor then JEE container throws an exception called
+           - ServletException with a root cause instantiation Exception(Object not created)
+       --> Immediately after the servlet object creation, one servlet config object is created by JEE container
+           - which is used to initialize the resources of servlet config. object is always limited to particular servlet object.
+
+     2. Service Phase:
+       --> By default service() is multithreaded means one thread is created for every client request and service() is executed.
+       --> Whenever a client makes 2nd client request to the same servlet again, only service() is executed by servlet object,
+          - again object won`t be created.
+       --> Service() is called by JEE container for multiple times or n-number of times.
+       --> If this phase fails, then JEE container throws an exception called ServletException.
+
+     3. Destruction Phase:
+       --> In this phase the destroy() is called to close all the costly resources but not to destroy the servlet object.
+       --> destroy() is called by JEE container only once.
+
+   Note:
+      -> It is not a good practice to destroy Servlet object since it is needed for future usage.
+
+   --> In which situation destroy() will be called??
+     -> Whenever we have to close an application, destroy() is called to close all the costly resources.
+     -> Whenever we re-display an application on to the server, destroy() is called to close the preciously used costly resources.
+
